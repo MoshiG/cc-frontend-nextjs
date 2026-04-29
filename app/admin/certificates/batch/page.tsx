@@ -44,7 +44,7 @@ export default function BatchIssuePage() {
   const [universities, setUniversities] = useState<University[]>([])
 
   useEffect(() => {
-    fetch("/api/v1/universities/")
+    fetch("/api/proxy/universities/")
       .then((r) => r.json())
       .then((data: University[]) => setUniversities(data.filter((u) => u.is_active)))
       .catch(() => {})

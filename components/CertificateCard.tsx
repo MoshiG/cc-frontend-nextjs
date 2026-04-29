@@ -24,8 +24,7 @@ export function CertificateCard({ cert, showStudentName }: Props) {
   const [qrOpen, setQrOpen] = useState(false)
   const isRevoked = cert.status === "revoked"
 
-  const API = process.env.NEXT_PUBLIC_API_URL ?? "http://192.168.2.8:8000"
-  const qrSrc = `${API}/api/v1/certificates/token/${cert.token_id}/qr`
+  const qrSrc = `/api/proxy/certificates/token/${cert.token_id}/qr`
 
   return (
     <>

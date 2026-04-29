@@ -7,7 +7,10 @@
 import { cookies } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 
-const BACKEND = process.env.INTERNAL_API_URL || "http://192.168.2.8:8000"
+const BACKEND = process.env.INTERNAL_API_URL
+if (!BACKEND) {
+  throw new Error("INTERNAL_API_URL is not set — required by /api/proxy/[...path]")
+}
 
 async function proxy(req: NextRequest, params: Promise<{ path: string[] }>) {
   try {

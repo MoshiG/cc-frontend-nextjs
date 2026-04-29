@@ -46,7 +46,7 @@ export function UniversityActions({ code, isActive, token }: Props) {
     setAccredLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/v1/universities/${code}/accreditation`, {
+      const res = await fetch(`/api/proxy/universities/${code}/accreditation`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -70,7 +70,7 @@ export function UniversityActions({ code, isActive, token }: Props) {
     setDeactivateLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/v1/universities/${code}`, {
+      const res = await fetch(`/api/proxy/universities/${code}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

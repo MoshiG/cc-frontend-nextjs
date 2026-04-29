@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     res.cookies.set("admin_token", data.access_token, {
       httpOnly: true,
       sameSite: "strict",
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       path: "/",
       maxAge: data.expires_in ?? 3600,
     })

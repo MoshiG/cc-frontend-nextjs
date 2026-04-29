@@ -41,17 +41,15 @@ export function VerifyClient({ isVerifier }: { isVerifier: boolean }) {
     setError(null)
     setResult(null)
 
-    const API = process.env.NEXT_PUBLIC_API_URL ?? "http://192.168.2.8:8000"
     const body: Record<string, string> = { token_id: values.token_id }
     if (isVerifier && values.manifest_hash?.trim()) {
       body.manifest_hash = values.manifest_hash.trim()
     }
 
     try {
-      const res = await fetch(`${API}/api/v1/certificates/verify`, {
+      const res = await fetch(`/api/proxy/certificates/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify(body),
       })
 

@@ -1,8 +1,11 @@
 // Server-side (server components, route handlers): must use an absolute URL.
 // Client-side (browser): use relative URLs so requests go through Nginx proxy.
-const INTERNAL_API = process.env.INTERNAL_API_URL || "http://192.168.2.8:8000"
+const INTERNAL_API = process.env.INTERNAL_API_URL
+if (typeof window === "undefined" && !INTERNAL_API) {
+  throw new Error("INTERNAL_API_URL is not set — required for server-side calls")
+}
 const API = typeof window === "undefined"
-  ? INTERNAL_API
+  ? (INTERNAL_API as string)
   : (process.env.NEXT_PUBLIC_API_URL ?? "")
 
 export class ApiError extends Error {

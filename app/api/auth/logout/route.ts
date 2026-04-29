@@ -1,7 +1,10 @@
 import { cookies } from "next/headers"
 import { NextResponse } from "next/server"
 
-const INTERNAL_API = process.env.INTERNAL_API_URL || "http://192.168.2.8:8000"
+const INTERNAL_API = process.env.INTERNAL_API_URL
+if (!INTERNAL_API) {
+  throw new Error("INTERNAL_API_URL is not set — required by /api/auth/logout")
+}
 
 /** Revoke a JWT on the backend blacklist (best-effort — don't fail logout if this errors). */
 async function revokeToken(token: string): Promise<void> {

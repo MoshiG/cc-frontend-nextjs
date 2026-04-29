@@ -56,9 +56,9 @@ export interface Student {
 
 export interface StudentListResponse {
   students: Student[]
-  total: int
-  limit: int
-  offset: int
+  total: number
+  limit: number
+  offset: number
 }
 
 export interface Certificate {
@@ -166,6 +166,3 @@ export interface TokenResponse {
   token_type: string
   expires_in: number
 }
-
-// Fix TypeScript error for int type used in StudentListResponse
-type int = number
