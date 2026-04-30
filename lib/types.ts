@@ -121,6 +121,8 @@ export interface Verifier {
   id: string
   organisation_name: string
   email: string
+  is_approved: boolean
+  approved_at: string | null
   created_at: string
 }
 

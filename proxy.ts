@@ -5,6 +5,7 @@ const ADMIN_PATHS = [
   "/admin/universities",
   "/admin/students",
   "/admin/certificates",
+  "/admin/verifiers",
   "/admin/audit-log",
 ]
 
@@ -35,6 +36,7 @@ export const config = {
     "/admin/universities/:path*",
     "/admin/students/:path*",
     "/admin/certificates/:path*",
+    "/admin/verifiers/:path*",
     "/admin/audit-log/:path*",
     "/verifier/dashboard/:path*",
   ],

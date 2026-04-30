@@ -8,6 +8,7 @@ import {
   Users,
   FileText,
   ClipboardList,
+  ShieldCheck,
   ChevronRight,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -17,6 +18,7 @@ const navItems = [
   { href: "/admin/universities", label: "Universities", icon: University },
   { href: "/admin/students", label: "Students", icon: Users },
   { href: "/admin/certificates", label: "Certificates", icon: FileText },
+  { href: "/admin/verifiers", label: "Verifiers", icon: ShieldCheck },
   { href: "/admin/audit-log", label: "Audit Log", icon: ClipboardList },
 ]
 
