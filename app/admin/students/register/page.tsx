@@ -22,7 +22,7 @@ const schema = z.object({
   email: z.string().email(),
   university_code: z.string().min(2),
   program: z.string().min(2).max(200),
-  year: z.string().optional(),
+  graduation_year: z.string().optional(),
 })
 type FormValues = z.infer<typeof schema>
 
@@ -61,7 +61,10 @@ export default function RegisterStudentPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
-          year: values.year && values.year !== "" ? parseInt(values.year) : null,
+          graduation_year:
+            values.graduation_year && values.graduation_year !== ""
+              ? parseInt(values.graduation_year)
+              : null,
         }),
       })
       if (!res.ok) {
@@ -140,8 +143,8 @@ export default function RegisterStudentPage() {
                 {errors.university_code && <p className="text-xs text-destructive">{errors.university_code.message}</p>}
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="year">Graduation Year</Label>
-                <select id="year" className={selectClass} {...register("year")}>
+                <Label htmlFor="graduation_year">Graduation Year</Label>
+                <select id="graduation_year" className={selectClass} {...register("graduation_year")}>
                   <option value="">— Select year —</option>
                   {YEARS.map((y) => (
                     <option key={y} value={y}>{y}</option>
