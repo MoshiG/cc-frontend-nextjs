@@ -16,7 +16,6 @@ import { Textarea } from "@/components/ui/textarea"
 const schema = z.object({
   code: z.string().min(2).max(10),
   name: z.string().min(3).max(200),
-  ethereum_address: z.string().regex(/^0x[0-9a-fA-F]{40}$/, "Invalid Ethereum address"),
   registration_number: z.string().min(3).max(100),
   country: z.string().optional(),
   contact_email: z.string().email().optional().or(z.literal("")),
@@ -95,12 +94,10 @@ export default function RegisterUniversityPage() {
               </div>
             </div>
 
-            <div className="space-y-1.5">
-              <Label htmlFor="ethereum_address">Ethereum Address *</Label>
-              <Input id="ethereum_address" placeholder="0x…" className="font-mono" {...register("ethereum_address")} />
-              {errors.ethereum_address && (
-                <p className="text-xs text-destructive">{errors.ethereum_address.message}</p>
-              )}
+            <div className="rounded-md border bg-muted/30 p-3 text-xs text-muted-foreground">
+              The gateway will mint a fresh keystore wallet for this university,
+              unlock it, and fund it from the Novaya admin key. The address is
+              shown on the university detail page after registration.
             </div>
 
             <div className="space-y-1.5">
